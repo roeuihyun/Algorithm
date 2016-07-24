@@ -5,7 +5,6 @@ package co.kr.tryhelloworld.level6;
 
 import java.math.BigInteger;
 
-
 /**
  * @author roeuihyun
  * http://tryhelloworld.co.kr/의 알고리즘 문제 Level6
@@ -22,74 +21,38 @@ import java.math.BigInteger;
  * 문제이해가 어려우면 2 x n 타일링 문제를 먼저 풀어 보세요.
  */
 class Tiling {
-	
-	
-	public int tiling(int n) {
-		
-		if(n == 0 || (n & 1) != 0){
-			return 0;
-		}
-		
-		int result = getTileCount(n);
-		String resultStr = String.valueOf(result);
-		System.out.println(resultStr);
-		if(resultStr.length() > 6){
-			result = Integer.parseInt(resultStr.substring(resultStr.length()-5,resultStr.length()));
-		}else{
-			result = Integer.parseInt(resultStr);
-		}
-		
-		return result;
-	}
-	
-	public static int getTileCount(int n){
-		BigInteger result = new BigInteger("1");
-		if(n == 2){
-			return 3;
-		}
-		for(double i = 1; i < n/2; i ++){
-			result = result.add(factorial((double)n).divide(factorial(i)));
-		}
-		return result.add(new BigInteger("2").pow(n/2)).intValue();
-	}
-	
-//	public static int getTileCount(int n){
-//	    
-//		int result = 0;
-//		for(int i = (n/2)-1; i > 0; i --){
-//			result += Math.pow(2,i) * Math.pow(3, i - 1);
-//		}
-//		
-//		return (int) (Math.pow(3, (n/2) ) + result);
-//	}
-	
-//	public static int getTileCount(int n){
-//		int result = 0;
-//		for(int i = 0 ; i <= (n/2 -2)  ; i ++ ){
-//			result += (i + 1) * Math.pow(3, i);
-//		}
-//		return (int) (Math.pow(3, n/2) + 2 * result);
-//	}
-	
-//    public static double factorial(int n) {
-//    	double result = 1;
-//        for (int i = 1; i <= n; i++) {
-//            result *= i;
-//        }
-//        return result;
-//    }
-	
-    public static BigInteger factorial(double n) {
-    	BigInteger result = new BigInteger("1");
-        for (int i = 1; i <= n; i++) {
-        	result = result.multiply(new BigInteger( Integer.toString(i) ));
+
+    public int tiling(int n) {
+        n += 2;
+        if(n == 0 || (n & 1) != 0){
+            return 0;
         }
-        return result;
+
+        int returnResult = 0;
+        BigInteger resultArray[] = new BigInteger[n];
+        resultArray[1] = new BigInteger("1");
+        resultArray[3] = new BigInteger("3");
+
+        for(int i = 3; i < n; i+=2){
+            resultArray[i] = resultArray[i - 2].multiply(new BigInteger("3"));
+            for(int j = 3; j < i; j+=2){
+                resultArray[i] = resultArray[i].add(resultArray[i - j - 1].multiply(new BigInteger("2")));
+            }
+        }
+
+        String resultStr = String.valueOf(resultArray[n - 1]);
+		if(resultStr.length() > 6){
+            returnResult = Integer.parseInt(resultStr.substring(resultStr.length()-5,resultStr.length()));
+		}else{
+            returnResult = Integer.parseInt(resultStr);
+		}
+
+        return returnResult;
     }
 
 	// 아래는 테스트로 출력해 보기 위한 코드입니다.
 	public static void main(String[] args) {
 		Tiling t = new Tiling();
-		System.out.println(t.tiling(4));
+		System.out.println(t.tiling(6));
 	}
 }
