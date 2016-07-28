@@ -15,7 +15,7 @@ import java.util.Scanner;
  * 2576번
  * 최소값 정렬 조건문
  */
-public class OddNumber {
+public class FindOddNumber {
 
     public static void main(String[] args){
         int input[] = new int[7];
