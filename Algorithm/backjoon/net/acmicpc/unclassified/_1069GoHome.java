@@ -21,11 +21,8 @@ public class _1069GoHome {
 
         Scanner sc = new Scanner(System.in);
 
-        while(true){
+        while(sc.hasNextLine()){
             String input = sc.nextLine();
-            if(input.equals("")){
-                break;
-            }
 
             int xPos = Integer.parseInt(input.split(" ")[0]);
             int yPos = Integer.parseInt(input.split(" ")[1]);
@@ -35,10 +32,9 @@ public class _1069GoHome {
             double totalTime = 0;
 
             while(true){
-
                 // 좌표 대각선의 길이가 점프 거리보다 작을 때
                 if(jumpDistance > diagonal){
-                    //좌표를 뛰어 넘어서 음수쪽으로 점프했다가 1만큼 그냥 걸어가는게 걷기만 했을 경우보다 빠를 때
+                    // 도착 좌표를 뛰어 넘어서 점프했다가 1씩 걸어가는게 걷기만 했을 경우보다 빠를 때
                     if(jumpTime - (diagonal - jumpDistance) <= diagonal){
                         totalTime += jumpTime - (diagonal - jumpDistance);
                         System.out.println(totalTime);

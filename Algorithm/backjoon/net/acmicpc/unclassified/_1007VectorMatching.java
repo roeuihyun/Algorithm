@@ -38,20 +38,20 @@ public class _1007VectorMatching {
             for(int j = 0 ; j < pointCount/2; j ++){
                 vector[2 * j][0] = - vectorPoint[2 * j][0] + vectorPoint[2 * j +1][0];
                 vector[2 * j][1] = - vectorPoint[2 * j][1] + vectorPoint[2 * j +1][1];
-                vector[2 * j + 1][0] = vectorPoint[2 * j][0] - vectorPoint[2 * j +1][0];
-                vector[2 * j + 1][1] = vectorPoint[2 * j][1] - vectorPoint[2 * j +1][1];
-            }
-
-            for(int j = 0 ; j < pointCount/2; j ++){
-                System.out.println(Arrays.toString(vector[j]));
             }
 
             double vectorTotal[] = new double[2];
             for(int j = 0 ; j < pointCount/2; j ++){
-                vectorTotal[0] += vector[j][0];
-                vectorTotal[1] += vector[j][1];
+                if(pointCount >= 4){
+                    vectorTotal[0] = Math.min(Math.min(Math.abs(vector[2 * j][0] + vector[2 * j + 1][0]), Math.abs(vector[2 * j][0] - vector[2 * j + 1][0])), Math.min(Math.abs(-vector[2 * j][0] + vector[2 * j + 1][0]), Math.abs(-vector[2 * j][0] - vector[2 * j + 1][0]) ));
+                    vectorTotal[1] = Math.min(Math.min(Math.abs(vector[2 * j][1] + vector[2 * j + 1][1]), Math.abs(vector[2 * j][1] - vector[2 * j + 1][1])), Math.min(Math.abs(-vector[2 * j][1] + vector[2 * j + 1][1]), Math.abs(-vector[2 * j][1] - vector[2 * j + 1][1]) ));
+                }else{
+                    vectorTotal[0] += vector[j][0];
+                    vectorTotal[1] += vector[j][1];
+                }
             }
             System.out.printf("%.6f", Math.round(Math.sqrt((Math.pow(vectorTotal[0],2) + Math.pow(vectorTotal[1],2))) * 1000000d)/1000000d );
+            System.out.println("");
         }
 
     }

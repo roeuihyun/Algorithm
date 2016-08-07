@@ -37,12 +37,9 @@ public class _2671IdentifiedSubmarine {
         int find[][] = {{1,9,4,1,5,5,1,8,5,9}
                 ,{2,3,9,2,9,6,7,7,3,9}};
         int now;
-        while(true){
+        while(sc.hasNextLine()){
             now = 0;
             String inputLine = sc.nextLine();
-            if(inputLine.equals("")){
-                break;
-            }
             int inputLength = inputLine.length();
 
 
