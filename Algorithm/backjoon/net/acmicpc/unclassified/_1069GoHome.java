@@ -35,7 +35,7 @@ public class _1069GoHome {
                 // 좌표 대각선의 길이가 점프 거리보다 작을 때
                 if(jumpDistance > diagonal){
                     // 도착 좌표를 뛰어 넘어서 점프했다가 1씩 걸어가는게 걷기만 했을 경우보다 빠를 때
-                    if(jumpTime - (diagonal - jumpDistance) <= diagonal){
+                    if(jumpTime - (diagonal - jumpDistance) < diagonal){
                         totalTime += jumpTime - (diagonal - jumpDistance);
                         System.out.println(totalTime);
                         break;
@@ -66,8 +66,14 @@ public class _1069GoHome {
 
                 }
 
+                // 좌표 대각선의 길이가 점프 2배 거리일 때
+                if(2 * jumpDistance == diagonal){
+                    System.out.println(jumpTime * 2);
+                    break;
+                }
+
                 // 2번 점프할 길이보다 큰 경우
-                if(2 * jumpDistance <= diagonal){
+                if(2 * jumpDistance < diagonal){
                     totalTime += jumpTime;
                     diagonal -= jumpDistance;
                 }
