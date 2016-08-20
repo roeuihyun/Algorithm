@@ -64,7 +64,7 @@ public class _1069GoHome {
                         break;
                     }
 
-                }
+                }  
 
                 // 좌표 대각선의 길이가 점프 2배 거리일 때
                 if(2 * jumpDistance == diagonal){
