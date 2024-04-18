@@ -18,10 +18,12 @@ package co.kr.programmers.level1;
 public class SumOfStringIntegers {
 	
 	public static void main(String[] args) {
-		SumOfStringIntegers convertToString = new SumOfStringIntegers();
+		
+		SumOfStringIntegers run = new SumOfStringIntegers();
 	    for(int i = 3; i <= 100; i++) {
-	        System.out.println(convertToString.solution(""+i));
+	        System.out.println(run.solution(""+i));
 	    }
+	    
 	}
 	
     public int solution(String num_str) {

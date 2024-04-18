@@ -19,10 +19,12 @@ package co.kr.programmers.level1;
 public class ConvertStringToInteger {
 	
 	public static void main(String[] args) {
-		ConvertStringToInteger convertToString = new ConvertStringToInteger();
+		
+		ConvertStringToInteger run = new ConvertStringToInteger();
 	    for(int i = 0; i <= 99999; i++) {
-	        System.out.println(convertToString.solution(""+i));
+	        System.out.println(run.solution(""+i));
 	    }
+	    
 	}
 	
     public int solution(String n_str) {

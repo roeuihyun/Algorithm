@@ -18,10 +18,12 @@ package co.kr.programmers.level1;
 public class ConvertToString {
 
 	public static void main(String[] args) {
-		ConvertToString convertToString = new ConvertToString();
+		
+		ConvertToString run = new ConvertToString();
 	    for(int i = 1; i <= 10000; i++) {
-	        System.out.println(convertToString.solution(i));
+	        System.out.println(run.solution(i));
 	    }
+	    
 	}
 	
     public String solution(int n) {
