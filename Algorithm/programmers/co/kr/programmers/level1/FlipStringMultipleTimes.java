@@ -3,8 +3,6 @@
  */
 package co.kr.programmers.level1;
 
-import java.util.stream.IntStream;
-
 /**
  * @author roeuihyun
  * 문자열 my_string과 이차원 정수 배열 queries가 매개변수로 주어집니다. 
